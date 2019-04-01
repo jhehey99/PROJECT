@@ -2,6 +2,6 @@
 
 clear  handles.procImg;
 axes(handles.axes_new); cla;
-imshow(handles.img_orig);
+imshow(handles.origImg);
 
 resetRgbSliders;

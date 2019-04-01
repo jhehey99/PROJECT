@@ -156,7 +156,7 @@ function btn_index_Callback(hObject, eventdata, handles)
 % hObject    handle to btn_index (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-    filter_index;
+    applyIndexing;
 
 
     
@@ -184,7 +184,7 @@ function sld_idxqcolor_Callback(hObject, eventdata, handles)
     handles.index_qcolors = floor(get(hObject,'Value'));
     set(handles.txt_idxqcolor, 'string', num2str(handles.index_qcolors));
     guidata(hObject, handles);
-    filter_index;
+    applyIndexing;
 
 % --- Executes during object creation, after setting all properties.
 function sld_idxqcolor_CreateFcn(hObject, eventdata, handles)
@@ -209,7 +209,7 @@ function txt_idxqcolor_Callback(hObject, eventdata, handles)
     handles.index_qcolors = str2double(get(hObject,'String'));
     set(handles.sld_idxqcolor, 'value', handles.index_qcolors);
     guidata(hObject, handles);
-    filter_index;
+    applyIndexing;
 
 % --- Executes during object creation, after setting all properties.
 function txt_idxqcolor_CreateFcn(hObject, eventdata, handles)

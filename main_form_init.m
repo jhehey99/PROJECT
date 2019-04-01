@@ -7,6 +7,7 @@ addpath Subtraction;
 addpath Contrast;
 addpath Thresholding;
 addpath Morphological;
+addpath IndexedImage;
 
 
 % initial variables
@@ -26,8 +27,11 @@ handles.multiNum = 2;
 
 % -- RGB Color
 handles.red = 0;
-handles.red = 0;
-handles.red = 0;
+handles.green = 0;
+handles.blue = 0;
+
+% -- Index
+handles.isIndex = 0;
 
 guidata(hObject, handles);
 

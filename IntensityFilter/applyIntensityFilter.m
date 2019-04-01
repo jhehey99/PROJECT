@@ -8,6 +8,7 @@ elseif (handles.intType == 0) % Grayscale Intensity
     handles.procImg = apply(I, handles.intLevel);
     displayImage;
 end
+guidata(hObject, handles);
 
 function J = apply(I, n)
     Idouble = im2double(I); 
