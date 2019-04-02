@@ -22,7 +22,7 @@ function varargout = main_form(varargin)
 
 % Edit the above text to modify the response to help main_form
 
-% Last Modified by GUIDE v2.5 29-Mar-2019 14:11:42
+% Last Modified by GUIDE v2.5 03-Apr-2019 02:12:14
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -54,6 +54,16 @@ function main_form_OpeningFcn(hObject, eventdata, handles, varargin)
 
 % Choose default command line output for main_form
 handles.output = hObject;
+
+% create an axes that spans the whole gui
+ah = axes('unit', 'normalized', 'position', [0 0 1 1]); 
+% import the background image and show it on the axes
+bg = imread('bgg.png'); imagesc(bg);
+% prevent plotting over the background and turn the axis off
+set(ah,'handlevisibility','off','visible','off')
+% making sure the background is behind all the other uicontrols
+uistack(ah, 'bottom');
+
 
 % Update handles structure
 guidata(hObject, handles);
@@ -269,7 +279,6 @@ function grp_int_SelectionChangedFcn(hObject, eventdata, handles)
 
 % --- Executes on button press in btn_multi.
 function btn_multi_Callback(hObject, eventdata, handles)
-    fprintf('Number of frames : %d\n', handles.multiNum);
     applyMultiframe;
 
 % Hint: edit controls usually have a white background on Windows.
@@ -406,4 +415,140 @@ function btn_morph_Callback(hObject, eventdata, handles)
 % hObject    handle to btn_morph (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-    applyMorphologicalOpening;
+applyMorphologicalOpening;
+
+
+
+function edit14_Callback(hObject, eventdata, handles)
+% hObject    handle to edit14 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit14 as text
+%        str2double(get(hObject,'String')) returns contents of edit14 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit14_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit14 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on slider movement.
+function sld_sigma_Callback(hObject, eventdata, handles)
+% hObject    handle to sld_sigma (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+applyGaussianFilter;
+
+% --- Executes during object creation, after setting all properties.
+function sld_sigma_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to sld_sigma (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+
+function txt_hsize_Callback(hObject, eventdata, handles)
+% hObject    handle to txt_hsize (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of txt_hsize as text
+%        str2double(get(hObject,'String')) returns contents of txt_hsize as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function txt_hsize_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to txt_hsize (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in btn_ave.
+function btn_ave_Callback(hObject, eventdata, handles)
+% hObject    handle to btn_ave (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+applyAverageFilter;
+
+
+function edit15_Callback(hObject, eventdata, handles)
+% hObject    handle to edit15 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'String') returns contents of edit15 as text
+%        str2double(get(hObject,'String')) returns contents of edit15 as a double
+
+
+% --- Executes during object creation, after setting all properties.
+function edit15_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to edit15 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: edit controls usually have a white background on Windows.
+%       See ISPC and COMPUTER.
+if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor','white');
+end
+
+
+% --- Executes on button press in btn_median.
+function btn_median_Callback(hObject, eventdata, handles)
+% hObject    handle to btn_median (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+applyMedianFilter;
+
+
+% --- Executes on slider movement.
+function sld_strength_Callback(hObject, eventdata, handles)
+% hObject    handle to sld_strength (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Hints: get(hObject,'Value') returns position of slider
+%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+applySharpening;
+
+% --- Executes during object creation, after setting all properties.
+function sld_strength_CreateFcn(hObject, eventdata, handles)
+% hObject    handle to sld_strength (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    empty - handles not created until after all CreateFcns called
+
+% Hint: slider controls usually have a light gray background.
+if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+    set(hObject,'BackgroundColor',[.9 .9 .9]);
+end
+
+
+% --- Executes on button press in btn_save.
+function btn_save_Callback(hObject, eventdata, handles)
+% hObject    handle to btn_save (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+saveImage;

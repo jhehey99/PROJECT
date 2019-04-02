@@ -1,7 +1,5 @@
 % clear processed image and display original
-
-clear  handles.procImg;
+handles.procImg = 0;
 axes(handles.axes_new); cla;
-imshow(handles.origImg);
-
 resetRgbSliders;
+guidata(hObject, handles);

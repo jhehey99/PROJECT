@@ -8,13 +8,14 @@ addpath Contrast;
 addpath Thresholding;
 addpath Morphological;
 addpath IndexedImage;
+addpath FIR;
 
 
 % initial variables
 handles.origImg = 0;
 handles.procImg = 0;
-handles.binLevel = 0;
-handles.index_qcolors = 1;
+handles.binLevel = 0.5;
+handles.index_qcolors = 32;
 
 
 % -- Intensity

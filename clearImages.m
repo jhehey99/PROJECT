@@ -1,7 +1,9 @@
 % clear original, and processed images and clear axes
 
-clear handles.origImg handles.procImg;
+handles.origImg = 0;
+handles.procImg = 0;
 axes(handles.axes_orig); cla;
 axes(handles.axes_new); cla;
 
 resetRgbSliders;
+guidata(hObject, handles);
