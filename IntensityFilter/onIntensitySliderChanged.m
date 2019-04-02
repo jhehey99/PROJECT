@@ -1,4 +1,4 @@
 
-% set(handles.txt_binlevel, 'string', num2str(handles.binLevel));
+set(handles.txt_intLevel, 'string', num2str(handles.intLevel));
 guidata(hObject, handles);
 run applyIntensityFilter;

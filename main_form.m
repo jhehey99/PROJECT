@@ -22,7 +22,7 @@ function varargout = main_form(varargin)
 
 % Edit the above text to modify the response to help main_form
 
-% Last Modified by GUIDE v2.5 03-Apr-2019 02:12:14
+% Last Modified by GUIDE v2.5 03-Apr-2019 02:41:02
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -230,11 +230,14 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-function edit3_Callback(hObject, eventdata, handles)
-
+function txt_intLevel_Callback(hObject, eventdata, handles)
+    handles.intLevel = str2double(handles.txt_intLevel.String);
+    set(handles.sld_intensity, 'value', handles.intLevel);
+    guidata(hObject, handles);
+    applyIntensityFilter;
 
 % --- Executes during object creation, after setting all properties.
-function edit3_CreateFcn(hObject, eventdata, handles)
+function txt_intLevel_CreateFcn(hObject, eventdata, handles)
 
 % Hint: edit controls usually have a white background on Windows.
 %       See ISPC and COMPUTER.
